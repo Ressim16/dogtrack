@@ -1,0 +1,29 @@
+# R session artefacts
+.Rhistory
+.RData
+*.RData
+.Rproj.user/
+*.Rproj
+
+# Generated documentation — rebuilt by devtools::document()
+/man/
+/doc/
+
+# Development and test scripts — not for publication
+dev/
+
+# Data — NEVER commit raw data
+data/
+*.csv
+*.CSV
+*.xlsx
+*.xls
+*.rds
+
+# Build outputs
+*.tar.gz
+*.zip
+
+# OS artefacts
+.DS_Store
+Thumbs.db

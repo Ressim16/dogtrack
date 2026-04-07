@@ -1,0 +1,46 @@
+Package: dogtrack
+Type: Package
+Title: GPS Data Preprocessing Pipeline for Free-Roaming Dog Movement Studies
+Version: 0.1.0
+Authors@R: c(
+    person("Reda", "Zahri",
+           email = "reda.zahri@hotmail.com",
+           role  = c("aut", "cre"),
+           comment = c(ORCID = "0009-0003-4855-757X")),
+    person("Inez", "Derkx",
+           email = "inez.derkx@swisstph.ch",
+           role  = "aut")
+  )
+Description: A reproducible multi-site GPS preprocessing pipeline for
+    free-roaming domestic dog movement data, developed for the Tracking
+    Tails project (Towards Rabies Eradication in Africa), University of Bern, Veterinary Public Health Institute. Implements
+    four sequential quality filters — HDOP, displacement speed, turning
+    angle, and ellipsoidal height — with site-specific thresholds
+    automatically derived from static GPS test files. Designed to handle
+    data from multiple field sites simultaneously using a single metadata
+    workbook and a consistent filename convention.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Depends:
+    R (>= 4.1.0)
+Imports:
+    dplyr    (>= 1.1.0),
+    fs       (>= 1.6.0),
+    lubridate(>= 1.9.0),
+    purrr    (>= 1.0.0),
+    readr    (>= 2.1.0),
+    readxl   (>= 1.4.0),
+    rlang    (>= 1.1.0),
+    stringr  (>= 1.5.0),
+    tibble   (>= 3.2.0),
+    tidyr    (>= 1.3.0),
+    tools
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+URL: https://github.com/Ressim16/dogtrack
+BugReports: https://github.com/Ressim16/dogtrack/issues

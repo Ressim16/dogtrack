@@ -1,0 +1,63 @@
+---
+title: "dogtrack: GPS preprocessing workflow"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{dogtrack: GPS preprocessing workflow}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", eval = FALSE)
+library(dogtrack)
+```
+
+## Overview
+
+`dogtrack` implements a four-stage GPS quality-control pipeline for
+free-roaming domestic dog movement data. It is designed to process
+data from multiple field sites simultaneously, with site-specific
+thresholds automatically derived from static GPS test files.
+
+## Minimal usage
+
+```{r}
+dog_data_flagged <- run_pipeline(
+  data_dir      = "data/",           # contains dog CSVs + static_*.CSV
+  metadata_path = "data/metadata.xlsx"
+)
+```
+
+## Filters applied
+
+| Stage | Filter | Threshold | Derivation |
+|---|---|---|---|
+| 01 | HDOP | 4.9 | Universal (Columbus P-10 Pro) |
+| 02 | Displacement speed | 5.556 m/s | Dürr & Ward (2014) |
+| 03 | Turning angle | 150° | Device-level artefact (Columbus P-10 Pro) |
+| 03 | Distance gate | *site-specific* | p95 positional error, static tests |
+| 04 | Ellipsoidal height | *site-specific* | p99.9 height + 30 m, static tests |
+
+## Flag interpretation
+
+```{r}
+# Each flag column is independent — combine as needed at analysis time
+clean <- dog_data_flagged |>
+  dplyr::filter(!flag_hdop, !flag_speed, !flag_angle, !flag_height)
+
+# Or inspect cumulative flagging
+flag_summary(dog_data_flagged)
+```
+
+## Sites without static tests
+
+When static tests are not yet available for a site, provide manual
+overrides for the site-specific thresholds:
+
+```{r}
+dog_data_flagged <- run_pipeline(
+  data_dir         = "data/",
+  metadata_path    = "data/metadata.xlsx",
+  height_overrides = list("N'Djamena" = 450)   # ~295 m a.s.l. + 155 m buffer
+)
+```
