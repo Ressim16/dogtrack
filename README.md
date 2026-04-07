@@ -2,6 +2,7 @@
 
 <!-- badges: start -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19449978.svg)](https://doi.org/10.5281/zenodo.19449978)
 <!-- badges: end -->
 
 **Tracking Tails — Towards Rabies Eradication in Africa**
@@ -67,7 +68,7 @@ If you use `dogtrack` in your research, please cite:
 
 > Zahri R., Derkx I. (2026). *dogtrack: GPS Data Preprocessing Pipeline
 > for Free-Roaming Dog Movement Studies* (v0.1.0).
-> https://doi.org/[zenodo-doi]
+> https://doi.org/10.5281/zenodo.19449978
 
 ## License
 
