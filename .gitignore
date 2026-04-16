@@ -6,7 +6,9 @@
 *.Rproj
 
 # Generated documentation — rebuilt by devtools::document()
-/man/
+/man/*.Rd
+/man/dogtrack-package.Rd
+!/man/figures/
 /doc/
 
 # Development and test scripts — not for publication

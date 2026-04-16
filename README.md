@@ -1,4 +1,4 @@
-# dogtrack <img src="man/figures/logo.png" align="right" height="139" alt="" />
+# dogtrack <img src="man/figures/dogtrack.png" align="right" height="139" alt="" />
 
 <!-- badges: start -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
